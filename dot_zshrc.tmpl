@@ -5,19 +5,18 @@ export EDITOR=nvim
 # History in cache directory:
 export HISTSIZE=10000000
 export SAVEHIST=10000000
-
 export HISTFILE=~/.cache/zsh/history
 
 export GLFW_IM_MODULE=ibus
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 export ESPIDF=/opt/esp-idf
-export PATH="/home/dantistnfs/.espressif/tools/xtensa-esp32-elf-clang/esp-13.0.0-20211203-x86_64-unknown-linux-gnu/bin/:$PATH"
-export LIBCLANG_PATH="/home/dantistnfs/.espressif/tools/xtensa-esp32-elf-clang/esp-13.0.0-20211203-x86_64-unknown-linux-gnu/lib/"
+export PATH="{{ .chezmoi.homeDir }}/.espressif/tools/xtensa-esp32-elf-clang/esp-13.0.0-20211203-x86_64-unknown-{{ .chezmoi.os }}-gnu/bin/:$PATH"
+export LIBCLANG_PATH="{{ .chezmoi.homeDir }}/.espressif/tools/xtensa-esp32-elf-clang/esp-13.0.0-20211203-x86_64-unknown-{{ .chezmoi.os }}-gnu/lib/"
 export PIP_USER=no
 
-export PATH="/home/dantistnfs/.cargo/bin:$PATH"
-export PATH="/home/dantistnfs/.deno/bin:$PATH"
-export PATH="/home/dantistnfs/.local/bin:$PATH"
+export PATH="{{ .chezmoi.homeDir }}/.cargo/bin:$PATH"
+export PATH="{{ .chezmoi.homeDir }}/.deno/bin:$PATH"
+export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 
 # ZSH options
 setopt histignoredups
@@ -26,17 +25,15 @@ setopt histignoredups
 # Load aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
-if [[ `uname` == "Linux" ]]; then
-    # move by words Ctrl + left/right arrow
-    bindkey "^[[1;5C" forward-word
-    bindkey "^[[1;5D" backward-word
-elif [[ `uname` == "Darwin" ]]; then
-    # move by words Ctrl + left/right arrow
-    bindkey "^[^[[D" forward-word
-    bindkey "^[^[[C" backward-word
-else
-    echo 'Unknown OS, some zsh shortcuts are undefined'
-fi
+{{ if eq .chezmoi.os "darwin" -}}
+bindkey "^[^[[D" forward-word
+bindkey "^[^[[C" backward-word
+{{ else if eq .chezmoi.os "linux" -}}
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+{{ else }}
+echo 'Unknown OS, some things may not work as they should'
+{{ end -}}
 
 
 ### Added by Zinit's installer
@@ -74,15 +71,15 @@ zinit cdreplay -q # <- execute compdefs provided by rest of plugins
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
 export MAMBA_EXE="/usr/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/dantistnfs/micromamba";
-__mamba_setup="$('/usr/bin/micromamba' shell hook --shell zsh --prefix '/home/dantistnfs/micromamba' 2> /dev/null)"
+export MAMBA_ROOT_PREFIX="{{ .chezmoi.homeDir }}/micromamba";
+__mamba_setup="$('/usr/bin/micromamba' shell hook --shell zsh --prefix '{{ .chezmoi.homeDir }}/micromamba' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
-    if [ -f "/home/dantistnfs/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "/home/dantistnfs/micromamba/etc/profile.d/micromamba.sh"
+    if [ -f "{{ .chezmoi.homeDir }}/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "{{ .chezmoi.homeDir }}/micromamba/etc/profile.d/micromamba.sh"
     else
-        export  PATH="/home/dantistnfs/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
+        export  PATH="{{ .chezmoi.homeDir }}/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
     fi
 fi
 unset __mamba_setup
