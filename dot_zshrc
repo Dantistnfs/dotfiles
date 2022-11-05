@@ -1,12 +1,12 @@
 # Zoomer Shell configuration (interactive shell)
 
-EDITOR=nvim
+export EDITOR=nvim
 
 # History in cache directory:
-HISTSIZE=10000000
-SAVEHIST=10000000
+export HISTSIZE=10000000
+export SAVEHIST=10000000
 
-HISTFILE=~/.cache/zsh/history
+export HISTFILE=~/.cache/zsh/history
 
 export GLFW_IM_MODULE=ibus
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
