@@ -1,0 +1,14 @@
+[user]
+	email = 5831286+Dantistnfs@users.noreply.github.com
+	name = Stanislav Zubenko
+	username = Dantistnfs
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[web]
+	browser = firefox
+[color]
+	ui = auto
+[diff]
+	tool = nvim -d
