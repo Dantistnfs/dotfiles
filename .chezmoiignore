@@ -1,3 +1,4 @@
 {{- if ne .chezmoi.os "linux" }}
 .config/i3/config
+.config/i3status-rust/config.toml
 {{- end }}

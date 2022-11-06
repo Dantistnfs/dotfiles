@@ -1,0 +1,24 @@
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage} {time} {power}"
+device = "DisplayDevice"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+
+
