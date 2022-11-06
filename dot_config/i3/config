@@ -109,7 +109,9 @@ bindsym $mod+a focus parent
 set $ws1 "1: LF/Terminal"
 set $ws2 "2: Firefox"
 for_window [class="firefox"] move container to workspace number $ws2
-set $ws3 "3: "
+set $ws3 "3: SlackTeams"
+for_window [class="Slack"] move container to workspace number $ws3
+for_window [class="Microsoft Teams.*"] move container to workspace number $ws3
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
