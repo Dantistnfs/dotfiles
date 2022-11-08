@@ -198,4 +198,5 @@ exec telegram-desktop
 exec keepassxc
 exec slack
 for_window [title="MP4-Slam"] floating enable
+for_window [title="Microsoft Teams Notification"] floating enable
 
