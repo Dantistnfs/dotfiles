@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.opt.termguicolors = true
 vim.bo.expandtab = true
 
+
 local keymap = vim.api.nvim_set_keymap
 
 -- ./lua/plugins.lua

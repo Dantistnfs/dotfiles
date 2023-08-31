@@ -115,7 +115,8 @@ for_window [class="Microsoft Teams.*"] move container to workspace number $ws3
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
+set $ws7 "7: Obsidian"
+for_window [class="obsidian"] move container to workspace number $ws7
 set $ws8 "8: Telegram"
 for_window [class="TelegramDesktop"] move container to workspace number $ws8
 set $ws9 "9"
@@ -198,6 +199,9 @@ exec firefox
 exec telegram-desktop
 exec keepassxc
 exec slack
+exec nextcloud
+exec teams
+exec obsidian
 for_window [title="MP4-Slam"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 

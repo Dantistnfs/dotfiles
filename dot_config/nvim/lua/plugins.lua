@@ -26,11 +26,13 @@ require('packer').startup({
     --   'romgrk/barbar.nvim',
     --   requires = {'kyazdani42/nvim-web-devicons'}
     -- }
-    use({
-    'noib3/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+    use({'willothy/nvim-cokeline',
+    requires = {
+      "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
+      "kyazdani42/nvim-web-devicons", -- If you want devicons
+    },
     config = function()
-      require('cokeline').setup()
+      require("cokeline").setup()
     end
     })
     -- Bottom line with open project
@@ -176,7 +178,7 @@ vim.notify = require('notify')
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require('lspconfig')
 
@@ -259,8 +261,6 @@ cmp.setup {
 require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
-  open_on_setup       = true,
-  ignore_ft_on_setup  = {'alpha'},
   open_on_tab         = true,
   hijack_cursor       = true,
   update_cwd          = true,
@@ -295,10 +295,6 @@ require'nvim-tree'.setup {
     width = 35,
     hide_root_folder = false,
     side = 'left',
-    mappings = {
-      custom_only = false,
-      list = {}
-    },
     number = false,
     relativenumber = false
   },
