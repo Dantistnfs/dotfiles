@@ -21,6 +21,8 @@ export PATH="{{ .chezmoi.homeDir }}/.local/bin:$PATH"
 # ZSH options
 setopt histignoredups
 
+alias ssh="kitten ssh"
+
 
 # Load aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
