@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Aliases
+alias ls='ls --color=auto'
+alias ssh="kitty +kitten ssh"
